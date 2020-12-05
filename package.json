@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "cross-env": "^5.1.4",
-    "react-scripts": "1.1.1"
+    "react-scripts": "4.0.1"
   },
   "dependencies": {
     "history": "^4.6.3",
@@ -26,6 +26,21 @@
     "start": "cross-env PORT=4100 react-scripts start",
     "build": "react-scripts build",
     "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "remove-cache": "rm -rf ./node_modules/.cache && rm -rf .eslintcache",
+    "profile-build": "node --cpu-prof --cpu-prof-dir=./cpuprofile --max-old-space-size=2000 --max-semi-space-size=1500 --predictable --no-compilation-cache ./node_modules/react-scripts/scripts/build.js",
+    "profile": "yarn remove-cache && yarn profile-build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
